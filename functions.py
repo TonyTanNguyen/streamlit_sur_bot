@@ -287,8 +287,8 @@ def get_driver():
     # options.add_argument('--headless')
     # options.add_argument(f"--window-size={width}x{height}")
     
-    # service = Service()
-    browser = webdriver.Chrome(options=options)
+    service = Service()
+    browser = webdriver.Chrome(service=service, options=options)
     
     return browser
 
