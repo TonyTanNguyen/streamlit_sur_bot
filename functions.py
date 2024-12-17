@@ -317,7 +317,7 @@ def get_driver():
     options.add_argument("--disable-gpu")
     options.add_argument("--headless")
     options.add_argument("--disable-dev-shm-usage")
-    service = service=Service(ChromeDriverManager().install())
+    service = service=Service()
     # service = Service()
     return webdriver.Chrome(
         service=service,
