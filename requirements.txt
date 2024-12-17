@@ -3,6 +3,3 @@ streamlit==1.36.0
 openpyxl
 seleniumbase
 webdriver-manager
-highcharts-core==1.5.1
-openai
-scipy
