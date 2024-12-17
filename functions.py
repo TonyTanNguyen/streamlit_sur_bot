@@ -244,7 +244,7 @@ def answer(browser):
     next_button = next_button_available(browser)
     question = find_question(browser)
     print(question.text)
-    
+    st.write(question.text)
     
     radios = isRadio(browser)
     checkboxes = isCheckbox(browser)
@@ -315,7 +315,7 @@ def get_logpath() -> str:
 def get_driver():
     options = Options()
     options.add_argument("--disable-gpu")
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     return webdriver.Chrome(
         service=Service(
             ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
