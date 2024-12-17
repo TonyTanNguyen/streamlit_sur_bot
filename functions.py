@@ -330,7 +330,7 @@ def run_all():
 
     st.write('Opening URL...')
     time.sleep(10)
-    next = WebDriverWait(browser, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[id="btn-next"]')))
+    next = WebDriverWait(browser, 50).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[id="btn-next"]')))
     st.write('Finding next button...')
     next.click()
     st.write("Next button clicked.")
