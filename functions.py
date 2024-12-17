@@ -318,7 +318,7 @@ def get_driver():
     options.add_argument("--headless")
     options.add_argument("--disable-dev-shm-usage")
     service = get_webdriver_service()
-    service = service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+    # service = service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
     # service = Service()
     return webdriver.Chrome(
         service=service,
