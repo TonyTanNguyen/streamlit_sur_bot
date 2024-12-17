@@ -9,6 +9,8 @@ from selenium.webdriver import DesiredCapabilities
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 
+import shutil
+
 import time
 import streamlit as st
 import re
@@ -279,19 +281,47 @@ def answer(browser):
     print("=========================================")
     # next_button.click()
 
+
+@st.cache_resource(show_spinner=False)
+def get_chromedriver_path() -> str:
+    return shutil.which('chromedriver')
+
+
 # @st.cache_resource
+def get_webdriver_service(logpath) -> Service:
+    service = Service(
+        executable_path=get_chromedriver_path(),
+        log_output=logpath,
+    )
+    return service
+
+def get_logpath() -> str:
+    return os.path.join(os.getcwd(), 'selenium.log')
+
+# def get_driver():
+#     options = webdriver.ChromeOptions()
+    
+#     options.add_argument('--disable-gpu')
+#     options.add_argument('--headless')
+#     # options.add_argument(f"--window-size={width}x{height}")
+#     options.add_argument('--no-sandbox')
+#     options.add_argument('--disable-dev-shm-usage')
+#     # service = Service()
+#     service = get_webdriver_service(logpath=logpath)
+#     browser = webdriver.Chrome(service = service,options=options)
+    
+#     return browser
+@st.cache_resource
 def get_driver():
-    options = webdriver.ChromeOptions()
-    
-    options.add_argument('--disable-gpu')
-    options.add_argument('--headless')
-    # options.add_argument(f"--window-size={width}x{height}")
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    service = Service()
-    browser = webdriver.Chrome(service = service,options=options)
-    
-    return browser
+    options = Options()
+    options.add_argument("--disable-gpu")
+    # options.add_argument("--headless")
+    return webdriver.Chrome(
+        service=Service(
+            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+        ),
+        options=options,
+    )
 
 def run_all():
 
