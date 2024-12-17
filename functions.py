@@ -331,7 +331,7 @@ def run_all():
     browser.get('https://tgm.mobi/sa/XQ276?surveytest=1')
 
     st.write('Opening URL...')
-    time.sleep(10)
+    time.sleep(60)
     st.write(browser.page_source)
     next = WebDriverWait(browser, 50).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[id="btn-next"]')))
     st.write('Finding next button...')
