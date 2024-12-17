@@ -315,9 +315,9 @@ def get_logpath() -> str:
 def get_driver():
     options = Options()
     options.add_argument("--disable-gpu")
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
     options.add_argument("--disable-dev-shm-usage")
-    service = service=Service()
+    service = service=Service(ChromeDriverManager().install())
     # service = Service()
     return webdriver.Chrome(
         service=service,
