@@ -317,8 +317,8 @@ def get_driver():
     options.add_argument("--disable-gpu")
     options.add_argument("--headless")
     options.add_argument("--disable-dev-shm-usage")
-    service = get_webdriver_service()
-    # service = service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+    # service = get_webdriver_service()
+    service = service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
     # service = Service()
     return webdriver.Chrome(
         service=service,
@@ -332,6 +332,7 @@ def run_all():
 
     st.write('Opening URL...')
     time.sleep(10)
+    st.write(browser.page_source)
     next = WebDriverWait(browser, 50).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[id="btn-next"]')))
     st.write('Finding next button...')
     next.click()
