@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+# from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
@@ -287,8 +287,8 @@ def get_driver():
     options.add_argument('--headless')
     # options.add_argument(f"--window-size={width}x{height}")
     
-    service = Service()
-    browser = webdriver.Chrome(service=service, options=options)
+    # service = Service()
+    browser = webdriver.Chrome(options=options)
     
     return browser
 
