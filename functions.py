@@ -288,15 +288,15 @@ def get_chromedriver_path() -> str:
 
 
 # @st.cache_resource
-def get_webdriver_service(logpath) -> Service:
+def get_webdriver_service() -> Service:
     service = Service(
         executable_path=get_chromedriver_path(),
-        log_output=logpath,
     )
     return service
 
 def get_logpath() -> str:
     return os.path.join(os.getcwd(), 'selenium.log')
+
 
 # def get_driver():
 #     options = webdriver.ChromeOptions()
@@ -317,6 +317,7 @@ def get_driver():
     options.add_argument("--disable-gpu")
     options.add_argument("--headless")
     options.add_argument("--disable-dev-shm-usage")
+    service = get_webdriver_service()
     service = service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
     # service = Service()
     return webdriver.Chrome(
