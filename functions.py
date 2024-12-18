@@ -328,14 +328,14 @@ def get_driver():
 def run_all():
 
     browser = get_driver()
-    browser.get('http://example.com')
+    browser.get('https://tgm.mobi/sa/XQ276?surveytest=1')
 
     st.write('Opening URL...')
-    # time.sleep(60)
+    time.sleep(10)
     st.write(browser.page_source)
-    # next = WebDriverWait(browser, 50).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[id="btn-next"]')))
+    next = WebDriverWait(browser, 50).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[id="btn-next"]')))
     st.write('Finding next button...')
-    # next.click()
+    next.click()
     st.write("Next button clicked.")
-    # while True:
-    #     answer(browser)
+    while True:
+        answer(browser)
